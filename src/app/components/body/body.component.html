@@ -1,0 +1,61 @@
+<mat-drawer-container class="w-100 h-100" hasBackdrop="false" autosize>
+    
+    <mat-drawer color="primary" #drawer class="example-sidenav text-center p-0" mode="over" style="width: 235px;">
+      
+        <div class="col-12">
+          <mat-icon class="user-icon">account_circle</mat-icon>
+        </div>
+        <div class="col-12 fs-5 pt-0 p-3">
+          Invitado
+        </div>
+        <div class="col-12">
+          <mat-divider></mat-divider>
+          <button mat-button class="w-100">Primary</button>
+        </div>
+        
+        <div class="col-12">
+          <mat-divider></mat-divider>
+          <button mat-button class="w-100">Primary</button>
+        </div>
+        <div class="col-12">
+          <mat-divider></mat-divider>
+          <button mat-button class="w-100">Primary</button>
+          <mat-divider></mat-divider>
+        </div>
+
+      
+      <p>Auto-resizing sidenav</p>
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+  
+ 
+    <mat-drawer-content style="margin-top: 64px; height: calc(100% - 64px);">
+      <!--Toolbar-->
+      <mat-toolbar color="primary" class="mat-elevation-z6 app-navbar">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        <span >Agenda</span>
+        <span class="example-spacer"></span>
+        <button (click)="fakeLoading()" routerLink="/main" mat-flat-button color="primary" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          Inicio        
+        </button>
+        <button (click)="fakeLoading()" routerLink="/semana" mat-flat-button color="primary" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          Semana        
+        </button>
+        <button (click)="fakeLoading()" routerLink="/mes" mat-flat-button color="primary" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          Mes        
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button class="example-icon" aria-label="Example icon-button with share icon">
+          Ingresar
+        </button>
+      </mat-toolbar>
+      <!--Contenido principal-->
+      <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+      <router-outlet *ngIf="!loading"></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
